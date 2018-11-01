@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: white;
+}
+
+#fundo{
+    background-image: url('http://lancedesign.org/en/wp-content/uploads/2016/05/Website-Design-Background-1.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#fundo .button{
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+#fundo .button:hover{
+    background-color: white;
+    color: black;
+}
+
+.flexcontainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.painel{
+    width: 30%;
+    height: 200px;
+    margin: 30px 0px 30px 0px;
+    padding: 40px;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.5);
+    text-align: justify;
+    overflow: hidden;
+    color: grey;
+}
+.painel .painel_titulo{
+    color: steelblue;
+    margin-bottom: 20px;
+    text-align: center;
+}
