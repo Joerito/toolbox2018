@@ -1,0 +1,39 @@
+.container{
+    position: relative;
+}
+
+nav{
+    position: absolute;
+}
+
+section{
+    margin-left: 200px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    background-color: white;
+    width: 100%;
+}
+
+body{
+    margin-bottom: 120px;
+}
+
+@media screen and (min-width:600px){
+    nav{
+        float: left;
+        width: 25%;
+    }
+    section{
+        margin-left: 25%;
+    }
+}
+@media screen and (max-width:599){
+    nav li{
+        display: inline;
+    }
+}

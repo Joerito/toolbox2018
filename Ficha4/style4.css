@@ -1,0 +1,30 @@
+.container{
+    display: -webkit-box;
+    display: flex;
+}
+
+nav{
+    width: 200ox;
+}
+
+.flex-column{
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+section{
+    margin-left: 200px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    background-color: white;
+    width: 100%;
+}
+
+body{
+    margin-bottom: 120px;
+}
