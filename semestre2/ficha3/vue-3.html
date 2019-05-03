@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div id="app">
+        <h2>Lista de Tarefas</h2>
+        <input type="text" placeholder="Insira uma nova tarefa" v-model="novatarefa" @keyup.enter="tarefas.push(novatarefa)">
+        <button @click="inseretarefa()">Inserir</button>
+        <ul>
+            <li v-for="i in tarefas" :class="{realizada:i.realizada, prioritario:i.prioritario}" @click="realizatarefa(i)">
+                {{i.nome}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var aplicacao = new Vue({
+            el: '#app',
+            data: {
+                novatarefa: 'com VueJS',
+                tarefas:[{
+                    nome: 'Exercicios de HTML',
+                    prioritario: false,
+                    realizada: false
+                },{
+                    nome: 'Exercicios de Javascript',
+                    prioritario: false,
+                    realizada: false
+                },{
+                    nome: 'Exercicios de VueJS',
+                    prioritario: false,
+                    realizada: false
+                },{
+                    nome: 'Exercicios de Angular',
+                    prioritario: false,
+                    realizada: false
+                }]
+            },
+            methods:{
+                realizatarefa: function(i){
+                    i.realizada = !i.realizada;
+                },
+
+                inseretarefa: function(){
+                    if(!!this.novatarefa){
+                        this.tarefas.push({
+                            nome: this.novatarefa,
+                            prioritario: false,
+                            realizada: false
+                        })
+                        this.novatarefa='';
+                    }
+                }
+            }
+        })
+    </script>
+
+    <style>
+        .realizada{
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .prioritario{
+            color: red;
+        }
+    </style>
+    
+</body>
+</html>

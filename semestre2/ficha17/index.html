@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Monster Slayer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<script src="https://npmcdn.com/vue/dist/vue.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="foundation.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <section class="row">
+            <div class="small-6 columns">
+                <h1 class="text-center">YOU</h1>
+                <div class="healthbar">
+                    <div 
+                        class="healthbar text-center" 
+                        style="background-color: green; margin: 0; color: white;" 
+                        v-bind:style="{width:playerhealth + '%'}">
+                        {{playerhealth}}
+                    </div>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <h1 class="text-center">MONSTER</h1>
+                <div class="healthbar">
+                    <div 
+                        class="healthbar text-center" 
+                        style="background-color: green; margin: 0; color: white;" 
+                        :style="{width:monsterhealth + '%'}">
+                        {{monsterhealth}}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row controls">
+            <div class="small-12 columns">
+                <button id="start-game" @click="startgame">START NEW GAME</button>
+            </div>
+        </section>
+
+        <section class="row controls">
+            <div class="small-12 columns">
+                <button id="attack" @click="attack">ATTACK</button>
+                <button id="special-attack" v-if="this.special == true" @click="specialattack">SPECIAL ATTACK</button>
+                <button id="special-attack" v-if="this.special == false" disabled @click="specialattack" style="background-color:transparent">SPECIAL ATTACK</button>
+                <button id="heal" v-if="this.healr == true" @click="heal">HEAL</button>
+                <button id="heal" v-if="this.healr == false" disabled @click="heal" style="background-color:transparent">HEAL</button>
+                <button id="give-up" @click="giveup">GIVE UP</button>
+            </div>
+        </section>
+
+        <!--
+        <section class="row log" v-if="turns.length > 0">
+            <div class="small-12 columns">
+                <ul>
+
+                    <transition-group name="fade" appear>
+
+                        
+                        <li v-for="i in turns" :class="{'player-turn':i.isplayer, 'monster-turn': !i.isplayer}" :key="i.id">
+                            {{i.text}}
+                        </li>
+                        
+
+                        <li v-for="turn in turns" :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}" :key="turn.id">
+                            {{ turn.text }}
+                        </li>
+
+                    </transition-group>
+
+                </ul>
+            </div>
+        </section>
+        -->
+
+        <!--
+        <section class="row log" v-if="turns.length > 0">
+            <div class="small-12 columns">
+                <ul>
+                    <transition-group name="fade" appear>
+                        <li v-for="turn in turns" :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}" :key="turn.id" class="fade-enter-active">
+                            {{ turn.text }}
+                        </li>
+                    </transition-group>
+                </ul>
+            </div>
+        </section>
+        -->
+
+        <section class="row log" v-if="turns.length > 0">
+            <div class="small-12 columns">
+                <transition-group name="list" appear>
+                    <ul>
+                        <li v-for="item in turns" :class="{'player-turn': item.isPlayer, 'monster-turn': !item.isPlayer}" :key="item" class="fade-enter-active">
+                            {{ item.text }}
+                        </li>
+                    </ul>
+                </transition-group>
+            </div>
+        </section>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

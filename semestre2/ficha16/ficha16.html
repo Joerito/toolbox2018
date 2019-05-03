@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ficha 16</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="exercicios">
+        <button @click="contador++">Incrementa</button>
+        <button @click="contador--">Decrementa</button>
+        <div>{{contador}}</div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#exercicios',
+            data: {
+                contador: 0
+            },
+            watch:{
+                contador: function(valor){
+                    var dados = this;
+                    setTimeout(function(){
+                        dados.contador=0;
+                    },2000);
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

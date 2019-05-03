@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <div>
+            Exercicio 1.
+            <form>
+                Nota Pratica
+                <input type="number" v-model.number="ex5_x"><br>
+                Nota Teorica
+                <input type="number" v-model.number="ex5_y">
+            </form>
+            Nota Prática: {{ex5_x}} Nota Teórica: {{ex5_y}} Resultado: {{ex5(ex5_x,ex5_y)}}
+        </div><br><br>
+
+        <div>
+            Exercicio 2.
+            <form>
+                Nº Mês
+                <input type="number" v-model.number="ex6_x">
+            </form>
+            {{ex6(ex6_x)}}
+        </div><br><br>
+
+        <div>
+            Exercicio 3.
+            <form>
+                Nº 1
+                <input type="number" v-model.number="ex7_x">
+                Nº 2
+                <input type="number" v-model.number="ex7_y">
+                Operador
+                <select v-model="ex7_z">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                    <option value="^">^</option>
+                </select>
+            </form>
+            {{ex7(ex7_x,ex7_y,ex7_z)}}
+        </div><br><br>
+
+        <div>
+            Exercicio 4.
+            {{ex8()}}
+        </div><br><br>
+
+        <div>
+            Exercicio 5.
+            {{ex9()}}
+        </div><br><br>
+
+        <div>
+            Exercicio 6.
+            <form>
+                Nº
+                <input type="number" v-model.number="ex10_x">
+            </form>
+            {{ex10(ex10_x)}}
+        </div><br><br>
+
+        <div>
+            Exercicio 7.
+            <form>
+                Lista
+                <input type="number" v-model.number="ex11_x">
+                <input type="number" v-model.number="ex11_y">
+            </form>
+            {{ex11([ex11_x,ex11_y])}}
+        </div><br><br>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ex5_x: 0,
+                ex5_y: 0,
+
+                ex6_x: 0,
+
+                ex7_x: 0,
+                ex7_y: 0,
+                ex7_z: 0,
+
+                ex10_x: 0,
+
+                ex11_x: 0,
+                ex11_y: 0
+            },
+            methods:{
+                ex5: function(ex5_x,ex5_y){
+                    return (ex5_x+ex5_y)/2
+                },
+
+                ex6: function(ex6_x){
+                    var mes_lib=[
+                        {
+                            "id":1,
+                            "mes_code":"Jan",
+                            "mes":"January"
+                        },
+                        {
+                            "id":2,
+                            "mes_code":"Feb",
+                            "mes":"February"
+                        },
+                        {
+                            "id":3,
+                            "mes_code":"Mar",
+                            "mes":"March"
+                        },
+                        {
+                            "id":4,
+                            "mes_code":"Apr",
+                            "mes":"April"
+                        },
+                        {
+                            "id":5,
+                            "mes_code":"May",
+                            "mes":"May"
+                        },
+                        {
+                            "id":6,
+                            "mes_code":"Jun",
+                            "mes":"June"
+                        },
+                        {
+                            "id":7,
+                            "mes_code":"Jul",
+                            "mes":"July"
+                        },
+                        {
+                            "id":8,
+                            "mes_code":"Aug",
+                            "mes":"August"
+                        },
+                        {
+                            "id":9,
+                            "mes_code":"Sep",
+                            "mes":"September"
+                        },
+                        {
+                            "id":10,
+                            "mes_code":"Oct",
+                            "mes":"October"
+                        },
+                        {
+                            "id":11,
+                            "mes_code":"Nov",
+                            "mes":"November"
+                        },
+                        {
+                            "id":12,
+                            "mes_code":"Dec",
+                            "mes":"December"
+                        }
+                    ]
+            
+                    return mes_lib[ex6_x-1];
+                },
+
+                ex7: function(ex7_x,ex7_y,ex7_z){
+                    switch (true) {
+                        case (ex7_z == '+') || (ex7_z == 0):
+                            return ex7_x+ex7_y;
+                            break;
+                        case (ex7_z == '-') || (ex7_z == 1):
+                            return ex7_x-ex7_y;
+                            break;
+                        case (ex7_z == '*') || (ex7_z == 2):
+                            return ex7_x*ex7_y;
+                            break;
+                        case (ex7_z == '/') || (ex7_z == 3):
+                            return ex7_x/ex7_y;
+                            break;
+                        case (ex7_z == '^') || (ex7_z == 4):
+                            return ex7_x^ex7_y;
+                            break;
+                        default:
+                            return "oof :/\n\t+, -, *, /, ^";
+                            break;
+                    }
+                },
+
+                ex8: function(){
+                    var i=0;
+                    var lista=[];
+                    while(true){
+                        if(5*i<=20){
+                            lista+=5*i+" ";
+                            console.log(5*i);
+                            i++;
+                        }else{
+                            break;
+                        }
+                    }
+                    return lista;
+                },
+
+                ex9: function(){
+                    var res=0;
+                    for (let i=0;i<=100;i++) {
+                        res+=i;
+                    }
+                    return res;
+                },
+
+                ex10: function(ex10_x){
+                    var fac=1;
+                    for (ex10_x;ex10_x>=1;ex10_x--) {
+                        fac=fac*ex10_x;
+                    }
+                    return fac
+                },
+
+                ex11: function(ex11_x){
+                    var add=0;
+                    var med=0;
+                    for (let i=0;i<ex11_x.length;i++) {
+                        add+=ex11_x[i];
+                    }
+                    med=add/ex11_x.length;
+                    return "Max: "+Math.max(...ex11_x)+"\nMin: "+Math.min(...ex11_x)+"\nMed: "+med;
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
